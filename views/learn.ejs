@@ -1,0 +1,30 @@
+<%- include('partials/header'); -%>
+
+<main class="container-fluid">
+  <div class="container-fluid p-5">
+    <h2>Welcome to our blog post!</h2>
+    <p>Let us begin our fitness journey by learning about it.</p>
+
+    <form action="/learn/compose">
+      <button type="submit" class="btn btn-primary">Compose</button>
+    </form>
+  </div>
+
+  <div class="container-fluid p-5 pt-0">
+    
+    <% posts.forEach(function(post) { %>
+        <h4>
+          <a href="/learn/<%= post._id %>"> <%= post.title %> </a>
+        </h4>
+        <p> 
+          <%- post.content.substring(0,Math.min(150,post.content.length))+'...' %> 
+          <span><a href="/learn/<%= post._id %>"> Read more</a></span> 
+        </p>
+    <% }) %>
+
+    
+  </div>
+  
+</main>
+
+<%- include('partials/footer'); -%>

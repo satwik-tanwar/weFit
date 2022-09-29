@@ -1,0 +1,171 @@
+.bodyPt{
+  padding-top: 68px;
+}
+
+/******************* navbar *********************/
+
+.offcanvas{
+  max-width:70%;
+}
+
+.vl{
+  border: 1px solid white;
+  border-radius: 1px;
+}
+
+
+
+/******************* footer *********************/
+footer{
+  background-color: #212529;
+  color:white;
+}
+
+footer a{
+  text-decoration: none;
+  font-weight: 250;
+  color: rgb(206, 205, 205);
+}
+footer a:hover{
+  color:white;
+}
+
+/******************* home page ******************/
+.header-img-container{
+  height:500px;
+}
+.header-img{
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  position:fixed;
+  z-index: -1;
+}
+
+.box{
+  height: 300px;
+  background-color: #16213e;
+  border-radius: 20px;
+}
+
+.carousel-inner{
+  width:70%;
+  margin:40px auto;
+}
+
+ /******************* blog ******************/
+ .blog-area{
+  margin: 1rem;
+}
+
+.blogTitle{
+  border: 0;
+  outline: none;
+  font-family: Verdana, sans-serif;
+  background-color: #f8f9fa;
+  resize: none;
+  text-align: justify;
+  font-size: 2rem;
+  width:70%;
+  font-weight:bold;
+}
+.blogContent{
+  text-align: justify;
+}
+
+.blogTitle::placeholder{
+  font-size: 2rem;
+  font-weight:normal;
+}
+
+.ck-editor__editable[role="textbox"] {
+  /* editing area */
+  min-height: 500px;
+}
+.ck-content .image {
+  /* block images */
+  max-width: 80%;
+  margin: 20px auto;
+}
+
+.publish-btn{
+  font-size: 0.8rem;
+  border-radius: 20px;
+  background-color: #e94560;
+  border: 0;
+}
+.up-btn{
+  position: relative;
+  float:right;
+  top:1.2rem;
+}
+
+.publish-btn:hover{
+  background-color: #c94560;
+}
+
+/******************* Login/Signup  ******************/
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+
+
+
+/******************* Genral Design ******************/
+
+
+.bg-blue-1{
+  background-color: #1a1a2e;
+}
+.bg-blue-2{
+  background-color: #16213e;
+}
+.bg-blue-3{
+  background-color: #0f3460;
+}
+.bg-pink{
+  background-color: #e94560;
+}
+
+/******************* media queries ******************/
+@media screen and (min-width: 768px) {
+
+  /******************* header/footer ******************/
+  .login{
+    color: white;
+  }
+
+  .signup{
+    border-radius: 20px;
+    background-color:#e94560 ;
+
+  }
+  .signup>a{
+    color:white;
+  }
+  .signup:hover{
+    background-color: #c94560;
+  }
+
+  .footer-col{
+    max-width: 70%;
+    margin: auto;
+  }
+}
+
+
+@media screen and (min-width: 992px){
+
+  /******************* blog ******************/
+  .blog-area{
+    margin: 1rem 15%;
+  }
+}
+
+
+

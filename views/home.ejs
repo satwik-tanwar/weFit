@@ -1,0 +1,118 @@
+<%- include('partials/header'); -%>
+
+<section>
+    <div class="header-img-container d-none d-md-block">
+        <img class="header-img" src="images/bg.png">
+    </div>
+</section>
+<main class="text-light bg-light py-3">
+    <div class="row mt-4 mx-0 px-sm-5 text-dark">
+        <div class="col-md-6">
+            <div class="bg-white m-3 p-3">
+                <img src="images/logo2.png" class="card-img-top mb-3" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title mb-2">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="bg-white m-3 p-3">
+                <img src="images/logo2.png" class="card-img-top mb-3" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title mb-2">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mt-4 mx-0 px-sm-5">
+        <div class="col-lg-4 col-sm-6">
+            <div class="box m-3 p-3">
+                <h4 class="text-center">Learn</h4>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="box m-3 p-3">
+                <h4 class="text-center">Share</h4>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="box m-3 p-3">
+                <h4 class="text-center">Tools</h4>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6" id="subscribe">
+            <div class="bg-white m-3 p-3 text-dark">
+                
+                <div class="alert <%= alertType %> <%= subscribeAlert %> alert-dismissible fade show">
+                    <div>
+                      <%= alertText %>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <h5 class="text-center">Subscribe to our Newsletter</h5>
+                <form action="/" method="post">
+                    <div class="form-floating mt-3">
+                        <input type="text" class="form-control border border-bottom-0 rounded-0" id="floatingInput" name="firstName" placeholder="First Name">
+                        <label for="floatingInput">First Name</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control border-bottom-0 rounded-0" id="floatingInput" name="lastName" placeholder="Last Name">
+                        <label for="floatingPassword">Last Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control rounded-0" id="floatingEmail" name="email" placeholder="name@example.com">
+                        <label for="floatingEmail">Email Address</label>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary d-block m-auto" type="submit" id="">Subscribe!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-8 col-sm-12 d-none d-sm-block">
+            <div class="bg-pink rounded-4 m-3 p-3">
+                <div id="carouselExampleControls" class="carousel slide">
+                    <div class="carousel-inner text-center">
+                      <div class="carousel-item active">
+                        <p>" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur "</p>
+                        <div>
+                            <img class="rounded-circle" src="images/user1.jpeg" height="80px">
+                            <span class="ps-3">Satwik Tanwar</span>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <p>" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur "</p>
+                        <div>
+                            <img class="rounded-circle" src="images/user1.jpeg" height="80px">
+                            <span class="ps-3">Satwik Tanwar</span>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <p>" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur "</p>
+                        <div>
+                            <img class="rounded-circle" src="images/user1.jpeg" height="80px">
+                            <span class="ps-3">Satwik Tanwar</span>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<%- include('partials/footer'); -%>

@@ -1,0 +1,23 @@
+<%- include('partials/header'); -%>
+
+<main class="container-fluid">
+  <div class="blog-area pt-5">
+
+    <form action="/learn/compose" method="post">
+      <div>
+        <textarea class="mb-3 blogTitle" name="newTitle" id="title" autocomplete="off" rows="1" placeholder="Title" autofocus></textarea>
+        <button type="submit " class="btn btn-primary publish-btn up-btn">Publish</button>
+      </div> 
+      <hr>
+      <div>
+        <textarea id="post" name="newPost" autocomplete="off" placeholder="Lets begin..."></textarea>
+      </div>
+      <div>
+        <button type="submit " class="btn btn-primary publish-btn mt-4">Publish</button>
+      </div>
+     
+    </form>
+  </div>
+</main>
+<script src="/javascript/blogs.js"></script>
+<%- include('partials/footer'); -%>
