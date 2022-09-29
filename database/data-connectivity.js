@@ -1,4 +1,7 @@
 const mongoose=require('mongoose');
+const encrypt=require('mongoose-encryption');
+const secret=process.env.SECRET;
+
 module.exports=database;
 
 function database(){
@@ -6,8 +9,7 @@ function database(){
   //--------------------------  USER DATA ----------------------------------//
 
   const userSchema=new mongoose.Schema({
-    username:String
-    ,
+    username:String,
     password: String,
     name: String,
     email: String,
@@ -26,7 +28,7 @@ function database(){
       }]
     }],
   });
-
+  userSchema.plugin(encrypt, { secret: secret, encryptedFields: ['password']});
 
   //--------------------------  DATA from TOOLS ----------------------------------//
 

@@ -1,8 +1,10 @@
 module.exports=authRoute;
 
+
 function authRoute(app,userDb){
 
   // ------------------ LOGIN PAGE --------------------//
+
   app.get("/login",function(req,res){
     const loginData ={
       title: 'Login'

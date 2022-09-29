@@ -78,6 +78,10 @@ footer a:hover{
   font-weight:normal;
 }
 
+img{
+  max-width: 100%;
+}
+
 .ck-editor__editable[role="textbox"] {
   /* editing area */
   min-height: 500px;

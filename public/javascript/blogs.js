@@ -13,6 +13,8 @@ function OnInput() {
 document.getElementById("navbar").classList.remove('fixed-top');
 document.getElementById("body").classList.remove('bodyPt');
 
+
+
 ClassicEditor.create( document.querySelector( '#post' ),{
     simpleUpload: {
         // The URL that the images are uploaded to.
@@ -31,4 +33,7 @@ ClassicEditor.create( document.querySelector( '#post' ),{
 }).catch( error => {
         console.log( error );
     } );
+
+
+
 
