@@ -172,6 +172,16 @@ img{
   opacity: 0.7;
 }
 
+.blogOptions{
+  position: absolute;
+  right:1rem;
+  top:2rem;
+}
+.blogBtn{
+  background-color: transparent;
+  border: 0;
+}
+
 /******************* Login/Signup  ******************/
 
 .divider:after,

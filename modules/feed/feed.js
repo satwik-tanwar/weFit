@@ -7,7 +7,6 @@ module.exports=feedRoute;
 function feedRoute(app,userDb){
   app.get('/home/feed',function(req,res){
     if(req.isAuthenticated()){
-      console.log(req.user.profilePicture);
       const renderData={
         title: "Home",
         loggedInUser:"d-block",

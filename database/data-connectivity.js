@@ -152,7 +152,7 @@ function database(){
     title: String,
     content: String,
     sampleText:String,
-    datePublished: Date,
+    lastModified: Date,
     author: String,
     authorImg: String,
     authorID:Object,

@@ -4,6 +4,8 @@
   <div class="blog-area pt-3">
 
     <form action="/learn/compose" method="post">
+      <div class="d-none" id="editBlogTitle"><%= editBlogTitle %></div>
+      <div class="d-none" id="editBlogContent"><%= editBlogContent %></div>
       <div>
         <textarea class="mb-3 blogTitle w-75" name="newTitle" id="title" autocomplete="off" rows="1" placeholder="Title" autofocus required></textarea>
         <button type="submit " class="btn btn-primary publish-btn up-btn">Publish</button>
@@ -19,5 +21,5 @@
     </form>
   </div>
 </main>
-<script src="/javascript/blogs.js"></script>
+<script src="/javascript/compose.js"></script>
 <%- include('partials/footer'); -%>

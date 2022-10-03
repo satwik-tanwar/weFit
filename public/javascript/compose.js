@@ -31,6 +31,24 @@ ClassicEditor.create( document.querySelector( '#post' ),{
   });
 
 
+// -------------------- edit blog ----------------------- //
+const editBlogTitle=document.getElementById('editBlogTitle').textContent;
+var editBlogContent=document.getElementById('editBlogContent').textContent;
+
+const parser = new DOMParser();
+editBlogContent = parser.parseFromString(editBlogContent, 'text/html');
+editBlogContent=editBlogContent.querySelector('body').innerHTML;
+
+//console.log(editBlogContent);
+window.addEventListener('load',function(){
+  document.getElementById('title').value=editBlogTitle;
+  document.getElementById('title').style.height=document.getElementById('title').scrollHeight+'px';
+
+  const CKEDITOR = document.querySelector( '.ck-editor__editable' );
+  CKEDITOR.ckeditorInstance.setData( editBlogContent );
+  
+});
+
 
 
 

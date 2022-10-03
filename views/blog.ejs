@@ -2,7 +2,7 @@
 
 <main>
   <div class="blog-area">
-    <div class="bg-blue-2 text-light rounded-1">
+    <div class="bg-blue-2 text-light rounded-1 position-relative">
       <div class="px-3">
         <img src="<%= authorImg %>" width="50px" height="50px" class="rounded-circle" referrerpolicy="no-referrer">
           <ul class="infoList">
@@ -11,11 +11,23 @@
           </ul>
       </div>
       <div class="blogTitle font-weight-bold p-3"><%= blogTitle %></div>
+
+      <div class="blogOptions <%= blogOptions %>">
+        <form action="/learn/edit/<%= blogID %>" method="get" class="d-inline">
+          <button type="submit" class="blogBtn me-2" id="editBlogBtn">
+            <i class="fa-solid fa-pen-to-square  text-grey"></i>
+          </button>
+        </form>
+        <button type="button" class="blogBtn" id="deleteBlogBtn">
+          <i class="fa-solid fa-trash-can  text-danger"></i>
+        </button>
+      </div>
+
     </div>
     <br>
     <div class="blogContent p-2 pt-0"><%- blogContent %></div>
   </div>
 </main>
 
-<script src="/javascript/blogs.js"></script>
+<script src="/javascript/blog.js"></script>
 <%- include('partials/footer'); -%>
