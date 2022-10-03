@@ -2,15 +2,34 @@ const mailChimp=require(__dirname+"/mailing-list.js");
 
 module.exports=homeRoute;
 
-function homeRoute(app){
-  const homeData={
-    title: "Home",
-    alertType: "",
-    subscribeAlert: "d-none",
-    alertText: ""
-  }
+function homeRoute(app,blogDb){
+  
   app.get("/",function(req,res){
-    res.render('home',homeData);
+
+    var foundItems=[]
+    if(req.isAuthenticated()){
+      res.redirect('/home/feed');
+    }else{
+      blogDb.find(function(err,foundItem){
+        if(err){
+          console.log(err);
+        }else{
+          const homeData={
+            title: "Home",
+            alertType: "",
+            subscribeAlert: "d-none",
+            alertText: "",
+            loggedInUser:"d-none",
+            loggedInUserImg:"d-none",
+            loginBtn:"d-block",
+            user:"",
+            userImg:"",
+            posts:foundItem
+          };
+          res.render('home',homeData);
+        }
+      }).sort({datePublished:-1}).limit(2);
+    } 
   });
   
   app.post("/",function(req,res){

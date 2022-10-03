@@ -1,6 +1,8 @@
 const mongoose=require('mongoose');
-const encrypt=require('mongoose-encryption');
-const secret=process.env.SECRET;
+const passport= require('passport');
+const passportLocalMongoose = require('passport-local-mongoose');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const findOrCreate = require('mongoose-findorcreate')
 
 module.exports=database;
 
@@ -9,15 +11,22 @@ function database(){
   //--------------------------  USER DATA ----------------------------------//
 
   const userSchema=new mongoose.Schema({
-    username:String,
-    password: String,
-    name: String,
     email: String,
+    isEmailVerified: { type: Boolean, default: false },
+    mobile: Number,
+    isMobileVerified: { type: Boolean, default: false },
+    googleID:String,
+    password: String,
+    isSignedUp: { type: Boolean, default: false },
+    adminAccess:{type:Boolean,default:false},
+    name: String,
     description: String,
-    private: Boolean,
+    gender: String,
+    dob: Date,
+    private: { type: Boolean, default: false },
     followers: [String],
     following: [String],
-    profilePicture: String,
+    profilePicture: {type: String, default:"/images/dp.png"},
     posts: [{
       date: Date,
       post: String,
@@ -28,7 +37,8 @@ function database(){
       }]
     }],
   });
-  userSchema.plugin(encrypt, { secret: secret, encryptedFields: ['password']});
+  userSchema.plugin(passportLocalMongoose,{usernameField: "email"});
+  userSchema.plugin(findOrCreate);
 
   //--------------------------  DATA from TOOLS ----------------------------------//
 
@@ -141,10 +151,45 @@ function database(){
   const blogSchema=new mongoose.Schema({
     title: String,
     content: String,
-    datePublished: Date
+    sampleText:String,
+    datePublished: Date,
+    author: String,
+    authorImg: String,
+    authorID:Object,
+    isFeatured: {type: Boolean, default:false},
+    blogImgs:[String],
+    likes:[String]
   });
 
   const User=mongoose.model('User',userSchema);
+  passport.use(User.createStrategy());
+
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+  
+  passport.deserializeUser(function(id, done) {
+    User.findById(id, function (err, user) {
+      done(err, user);
+    });
+  });
+
+  passport.use(new GoogleStrategy({
+    clientID:process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/google/fitty",
+  },function(accessToken, refreshToken, profile, cb) {
+        User.findOrCreate({ googleID: profile.id },function (err, user) {
+          user.name=profile.displayName;
+          user.isEmailVerified=true;
+          user.email=profile.emails[0].value;
+          user.profilePicture=profile.photos[0].value;
+          user.save();
+          return cb(err, user);
+        });
+    }
+  ));
+
   const Tool=mongoose.model('Tool',toolsDataSchema);
   const Blog=mongoose.model('Blog',blogSchema);
 

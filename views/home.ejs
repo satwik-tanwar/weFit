@@ -1,51 +1,57 @@
 <%- include('partials/header'); -%>
 
 <section>
-    <div class="header-img-container d-none d-md-block">
-        <img class="header-img" src="images/bg.png">
+    <div class="header-container">
+        <img class="header-img" src="/images/bg.png">
+        <h1 class="goalText">On a mission to make evryone fit!</h1>
     </div>
 </section>
-<main class="text-light bg-light py-3">
-    <div class="row mt-4 mx-0 px-sm-5 text-dark">
-        <div class="col-md-6">
-            <div class="bg-white m-3 p-3">
-                <img src="images/logo2.png" class="card-img-top mb-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title mb-2">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
+<main class="bg-light text-light pb-3">
+    <div class="row mx-0 px-sm-5 bg-blue-1 text-light">
+        <div class="ps-4 ps-md-5 pt-5">
+            <h2 class="mb-0">Latest Articles</h2>
+            <p class="mb-0 text-grey">Start you fitness journey by <a href="/learn" class="link-light">learning</a> !</p>
         </div>
-        <div class="col-md-6">
-            <div class="bg-white m-3 p-3">
-                <img src="images/logo2.png" class="card-img-top mb-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title mb-2">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <% posts.forEach(function(post) { %>
+            <div class="col-md-6">
+                <div class=" m-1 m-lg-3 mt-md-0 p-2 py-4 p-lg-4 article-box">
+                    <a href="/learn/<%= post._id %>"">
+                        <img src='<%= post.blogImgs[0] %>' class="card-img-top mb-3">
+                    </a>
+                    <div class="card-body">
+                        <a href="/learn/<%= post._id %>" class="text-light text-decoration-none">
+                            <h4 class="card-title mb-1"><%= post.title %></h4>
+                            <p class="text-secondary">by <span class="text-grey"><%= post.author %></span></p>
+                        </a>
+                        <p class="card-text text-grey">
+                            <%= post.sampleText %>
+                        </p>
+                        <a class="btn btn-success rounded-5" href="/learn/<%= post._id %>"> Read more</a>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </div>    
+          <% }) %>
     </div>
 
 
     <div class="row mt-4 mx-0 px-sm-5">
-        <div class="col-lg-4 col-sm-6">
-            <div class="box m-3 p-3">
+        <div class="col-lg-4 col-md-6">
+            <div class="box m-1 m-lg-3 p-3">
                 <h4 class="text-center">Learn</h4>
             </div>
         </div>
-        <div class="col-lg-4 col-sm-6">
-            <div class="box m-3 p-3">
+        <div class="col-lg-4 col-md-6">
+            <div class="box m-1 m-lg-3 p-3">
                 <h4 class="text-center">Share</h4>
             </div>
         </div>
-        <div class="col-lg-4 col-sm-6">
-            <div class="box m-3 p-3">
+        <div class="col-lg-4 col-md-6">
+            <div class="box m-1 m-lg-3 p-3">
                 <h4 class="text-center">Tools</h4>
             </div>
         </div>
-        <div class="col-lg-4 col-sm-6" id="subscribe">
-            <div class="bg-white m-3 p-3 text-dark">
+        <div class="col-lg-4 col-md-6 " id="subscribe">
+            <div class="bg-white m-1 m-lg-3 p-4 text-dark rounded-4">
                 
                 <div class="alert <%= alertType %> <%= subscribeAlert %> alert-dismissible fade show">
                     <div>
@@ -57,11 +63,11 @@
                 <h5 class="text-center">Subscribe to our Newsletter</h5>
                 <form action="/" method="post">
                     <div class="form-floating mt-3">
-                        <input type="text" class="form-control border border-bottom-0 rounded-0" id="floatingInput" name="firstName" placeholder="First Name">
+                        <input type="text" class="form-control rounded-0" id="floatingInput" name="firstName" placeholder="First Name">
                         <label for="floatingInput">First Name</label>
                     </div>
                     <div class="form-floating">
-                        <input type="text" class="form-control border-bottom-0 rounded-0" id="floatingInput" name="lastName" placeholder="Last Name">
+                        <input type="text" class="form-control rounded-0" id="floatingInput" name="lastName" placeholder="Last Name">
                         <label for="floatingPassword">Last Name</label>
                     </div>
                     <div class="form-floating mb-3">
@@ -74,12 +80,12 @@
                 </form>
             </div>
         </div>
-        <div class="col-lg-8 col-sm-12 d-none d-sm-block">
-            <div class="bg-pink rounded-4 m-3 p-3">
+        <div class="col-lg-8 col-sm-12">
+            <div class="bg-pink rounded-4 m1 m-lg-3 p-3">
                 <div id="carouselExampleControls" class="carousel slide">
                     <div class="carousel-inner text-center">
                       <div class="carousel-item active">
-                        <p>" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur "</p>
+                        <p>" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur "</p>
                         <div>
                             <img class="rounded-circle" src="images/user1.jpeg" height="80px">
                             <span class="ps-3">Satwik Tanwar</span>

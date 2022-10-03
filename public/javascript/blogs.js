@@ -1,3 +1,9 @@
+// -------------------- general ----------------------- //
+document.getElementById("navbar").classList.remove('fixed-top');
+document.getElementById("body").classList.remove('bodyPt');
+
+
+// -------------------- compose ----------------------- //
 const tx = document.getElementsByTagName("textarea");
 for (let i = 0; i < tx.length; i++) {
   tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;");
@@ -9,30 +15,31 @@ function OnInput() {
   this.style.height = (this.scrollHeight) + "px";
 }
 
-
-document.getElementById("navbar").classList.remove('fixed-top');
-document.getElementById("body").classList.remove('bodyPt');
-
-
-
 ClassicEditor.create( document.querySelector( '#post' ),{
-    simpleUpload: {
-        // The URL that the images are uploaded to.
-        uploadUrl: '/learn/compose/upload',
-
-        // // Enable the XMLHttpRequest.withCredentials property.
-        // withCredentials: true,
-
-        // // Headers sent along with the XMLHttpRequest to the upload server.
-        // headers: {
-        //     'X-CSRF-TOKEN': 'CSRF-Token',
-        //     Authorization: 'Bearer <JSON Web Token>'
-        // }
-    },
-    placeholder: 'Lets Begin...',
+  simpleUpload: {
+    uploadUrl: '/learn/compose/upload',
+  },
+  placeholder: 'Lets Begin...',
+  removePlugins:[
+    'ImageCaption',
+    'ImageResize',
+    'ImageStyle',
+    'ImageToolbar'
+  ]
 }).catch( error => {
-        console.log( error );
-    } );
+      console.log( error );
+  });
+
+
+
+
+
+
+
+
+
+
+
 
 
 

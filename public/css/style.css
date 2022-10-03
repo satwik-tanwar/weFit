@@ -9,9 +9,11 @@
 }
 
 .vl{
-  border: 1px solid white;
+  border: 1px solid black;
   border-radius: 1px;
 }
+
+
 
 
 
@@ -31,20 +33,41 @@ footer a:hover{
 }
 
 /******************* home page ******************/
-.header-img-container{
-  height:500px;
+.header-container{
+  height: 500px;
 }
+
 .header-img{
-  width: 100%;
-  max-height: 500px;
-  object-fit: cover;
-  position:fixed;
+  max-height: 600px;
+  position: fixed;
+  right: 0;
   z-index: -1;
+}
+
+.goalText{
+  font-family: 'Silkscreen', cursive;
+  position: fixed;
+  z-index: -1;
+  top:6rem;
+  left:2rem;
+  max-width: 50%;
+}
+
+.card-text{
+  text-align: justify;
+}
+.card-img-top{
+  height: 250px;
+  object-fit:fill;
+}
+.card-img-top:hover{
+  opacity: 0.7;
 }
 
 .box{
   height: 300px;
-  background-color: #16213e;
+  background-color: #1a1a2e;
+  color: white;
   border-radius: 20px;
 }
 
@@ -54,19 +77,50 @@ footer a:hover{
 }
 
  /******************* blog ******************/
- .blog-area{
-  margin: 1rem;
+
+.blogHomeImgBox{
+  text-align: center;
+}
+.blogHomeImg{
+  max-height: 350px;
+  margin: 5rem 0 ;
+}
+
+.blogHeaderText{
+  font-family: 'Silkscreen', cursive;
+
+}
+
+.blog-home{
+  padding: 0.5rem 1rem;
+}
+
+
+.blog-area{
+  max-width: 998px;
+  margin: 2rem auto;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background-color: white;
+}
+
+
+.infoList{
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding:15px;
+  position: relative;
+  top:13px;
 }
 
 .blogTitle{
   border: 0;
   outline: none;
   font-family: Verdana, sans-serif;
-  background-color: #f8f9fa;
   resize: none;
-  text-align: justify;
-  font-size: 2rem;
-  width:70%;
+  font-size: 1.5rem;
+  width:100%;
   font-weight:bold;
 }
 .blogContent{
@@ -86,11 +140,7 @@ img{
   /* editing area */
   min-height: 500px;
 }
-.ck-content .image {
-  /* block images */
-  max-width: 80%;
-  margin: 20px auto;
-}
+
 
 .publish-btn{
   font-size: 0.8rem;
@@ -108,6 +158,20 @@ img{
   background-color: #c94560;
 }
 
+.blogs{
+  max-width: 1100px;
+  margin: auto;
+}
+
+.blogThumbnail{
+  height: 270px;
+  width: 100%;
+}
+
+.blogThumbnail:hover{
+  opacity: 0.7;
+}
+
 /******************* Login/Signup  ******************/
 
 .divider:after,
@@ -118,7 +182,58 @@ height: 1px;
 background: #eee;
 }
 
+.error{
+  font-size: 0.9rem;
+}
 
+#message p{
+  display: inline-block;
+  font-size: 0.9rem;
+  margin: 5px 3px;
+  padding:5px 10px;
+  border-radius: 20px;
+}
+
+.valid{
+  background-color: #d0f7ec;
+  color: #06926f;
+}
+.valid::before{
+  font: var(--fa-font-solid);
+  content: "\f00c";
+  color: #06926f;
+  padding-right: 5px;
+}
+
+.invalid{
+  background-color: #f7d0d0;
+  color: #920606;
+}
+.invalid::before{
+  font: var(--fa-font-solid);
+  content: "\f00d";
+  color: #920606;
+  padding-right: 5px;
+}
+
+.gender{
+  position: relative;
+  top:5px;
+  margin-left: auto;
+}
+.desc{
+  resize: none;
+  overflow: hidden;
+  text-align: justify;
+}
+.dpImg:hover{
+  opacity: 0.7;
+}
+#uploadedImg{
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+}
 
 /******************* Genral Design ******************/
 
@@ -135,39 +250,117 @@ background: #eee;
 .bg-pink{
   background-color: #e94560;
 }
+.text-pink{
+  color: #e94560;
+}
+.btn-pink{
+  background-color: #e94560e9;
+  color: white;
+  border-radius: 20px;
+  border: 0;
+}
+.btn-pink:hover{
+  color: rgb(210, 209, 209);
+  background-color: #c94560;
+}
+
+.text-grey{
+  color:rgb(212, 209, 209);
+}
+
+.monospace{
+  font-family: monospace;
+}
 
 /******************* media queries ******************/
+
+@media screen and (min-width: 576px){
+  .goalText{
+    top:9rem;
+    left:4rem;
+  }
+}
+
 @media screen and (min-width: 768px) {
 
-  /******************* header/footer ******************/
-  .login{
-    color: white;
+  .goalText{
+    top:12rem;
+    left:9rem;
   }
+
+  /******************* header/footer ******************/
 
   .signup{
     border-radius: 20px;
-    background-color:#e94560 ;
+    background-color:#1a1a2e ;
 
   }
   .signup>a{
     color:white;
   }
+  .signup>a:hover{
+    color:white;
+  }
   .signup:hover{
-    background-color: #c94560;
+    background-color: #20305b;
   }
 
   .footer-col{
     max-width: 70%;
     margin: auto;
   }
+
+
+  /******************* blogs ******************/
+
+  .blogHomeImgBox{
+    display: inline-block;
+    max-width: 50%;
+  }
+
+  .blogHeader{
+    max-width: 45%;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    top:7rem;
+    left:1rem;
+  }
+
+
+  /******************* signin/signup ******************/
+
+  .completeProfileForm{
+    width: 70%;
+  }
+
+  .gender{
+    margin-left: 0.8rem;
+  }
 }
 
 
-@media screen and (min-width: 992px){
+@media screen and (min-width: 1100px){
 
   /******************* blog ******************/
-  .blog-area{
-    margin: 1rem 15%;
+  
+  .completeProfileForm{
+    width:45%;
+  }
+
+  .blogHomeImgBox{
+    display: inline-block;
+    max-width: 65%;
+    margin-left: 3rem;
+  }
+
+  .blogHeader{
+    max-width: 35%;
+    margin-right: 5rem;
+    float: right;
+    position: relative;
+    top:6rem;
   }
 }
 

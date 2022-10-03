@@ -1,30 +1,76 @@
 <%- include('partials/header'); -%>
 
-<main class="container-fluid">
-  <div class="container-fluid p-5">
-    <h2>Welcome to our blog post!</h2>
-    <p>Let us begin our fitness journey by learning about it.</p>
+<main class="container-fluid p-0">
 
-    <form action="/learn/compose">
-      <button type="submit" class="btn btn-primary">Compose</button>
-    </form>
+
+  <div class="container-fluid bg-blue-1 pb-4 text-light">
+
+    <div class="blogHomeImgBox">
+      <img src="/images/bg3.png" class="my-2 blogHomeImg">
+    </div>
+
+    <div class="container-fluid blogHeader">
+      <h2 class="blogHeaderText">Your destination for fitness</h2><br>
+      <p class="text-grey monospace">Start your fitness journey with knowledge and motivation, share you first story now!!</p>
+      <a href="/learn/compose">
+        <button type="submit" class="btn btn-pink">Write a story</button>
+      </a>
+    </div>
   </div>
 
-  <div class="container-fluid p-5 pt-0">
-    
-    <% posts.forEach(function(post) { %>
-        <h4>
-          <a href="/learn/<%= post._id %>"> <%= post.title %> </a>
-        </h4>
-        <p> 
-          <%- post.content.substring(0,Math.min(150,post.content.length))+'...' %> 
-          <span><a href="/learn/<%= post._id %>"> Read more</a></span> 
-        </p>
-    <% }) %>
-
-    
+  <div class="container-fluid my-4">
+    <div class="blogs"> 
+      <h3>Featured Posts</h3>
+      <% featuredPosts.forEach(function(post) { %>
+        <div class="row mb-5">
+          <div class="col-md-6 p-3">
+            <a href="/learn/<%= post._id %>">
+              <img src="<%= post.blogImgs[0] %>" class="blogThumbnail">
+            </a>
+          </div>
+          <div class="col-md-6 p-3">
+            <h4 class="mb-0">
+              <a href="/learn/<%= post._id %>" class="text-dark text-decoration-none"> <%= post.title %> </a>
+            </h4>
+            <p class="text-secondary">by <span class="text-pink"><%= post.author %></span></p>
+            <div class="sampleText"> 
+              <%= post.sampleText %> 
+            </div>
+            <div class="mt-4">
+              <a class="btn btn-success rounded-5" href="/learn/<%= post._id %>"> Read more</a>
+            </div>
+            
+          </div>
+          
+        </div>
+      <% }) %>
+    </div>
   </div>
-  
+
+  <div class="container-fluid bg-blue-2 m-0 py-5 text-light">
+    <div class="blogs">
+      <h3>Latest Posts</h3>
+      <div class="row">
+        <% posts.forEach(function(post) { %>
+        
+          <div class="col-md-4 p-3">
+            <div><a href="/learn/<%= post._id %>">
+              <img src="<%= post.blogImgs[0] %>" class="py-4 blogThumbnail">
+            </a></div>
+            <p class="fs-5 mb-1">
+              <a href="/learn/<%= post._id %>" class="link-light text-decoration-none">
+                 <%= post.title %> 
+              </a>
+            </p>
+            <p class="text-secondary">by <span class="text-pink"><%= post.author %></span></p> 
+          </div>
+        
+       <% }) %>
+      </div>
+    </div>
+  </div>
+
+
 </main>
 
 <%- include('partials/footer'); -%>

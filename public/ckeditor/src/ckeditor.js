@@ -20,7 +20,6 @@ import Heading from '@ckeditor/ckeditor5-heading/src/heading.js';
 import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight.js';
 import HorizontalLine from '@ckeditor/ckeditor5-horizontal-line/src/horizontalline.js';
 import HtmlComment from '@ckeditor/ckeditor5-html-support/src/htmlcomment.js';
-import HtmlEmbed from '@ckeditor/ckeditor5-html-embed/src/htmlembed.js';
 import Image from '@ckeditor/ckeditor5-image/src/image.js';
 import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption.js';
 import ImageInsert from '@ckeditor/ckeditor5-image/src/imageinsert.js';
@@ -36,7 +35,6 @@ import LinkImage from '@ckeditor/ckeditor5-link/src/linkimage.js';
 import List from '@ckeditor/ckeditor5-list/src/list.js';
 import ListProperties from '@ckeditor/ckeditor5-list/src/listproperties.js';
 import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed.js';
-import MediaEmbedToolbar from '@ckeditor/ckeditor5-media-embed/src/mediaembedtoolbar.js';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph.js';
 import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter.js';
 import SpecialCharacters from '@ckeditor/ckeditor5-special-characters/src/specialcharacters.js';
@@ -52,11 +50,9 @@ import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript.js';
 import Table from '@ckeditor/ckeditor5-table/src/table.js';
 import TableCaption from '@ckeditor/ckeditor5-table/src/tablecaption.js';
 import TableCellProperties from '@ckeditor/ckeditor5-table/src/tablecellproperties';
-import TableColumnResize from '@ckeditor/ckeditor5-table/src/tablecolumnresize.js';
 import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar.js';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
-import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount.js';
 
 class Editor extends ClassicEditor {}
 
@@ -79,7 +75,6 @@ Editor.builtinPlugins = [
 	Highlight,
 	HorizontalLine,
 	HtmlComment,
-	HtmlEmbed,
 	Image,
 	ImageCaption,
 	ImageInsert,
@@ -95,7 +90,6 @@ Editor.builtinPlugins = [
 	List,
 	ListProperties,
 	MediaEmbed,
-	MediaEmbedToolbar,
 	Paragraph,
 	SimpleUploadAdapter,
 	SpecialCharacters,
@@ -111,11 +105,9 @@ Editor.builtinPlugins = [
 	Table,
 	TableCaption,
 	TableCellProperties,
-	TableColumnResize,
 	TableProperties,
 	TableToolbar,
-	Underline,
-	WordCount
+	Underline
 ];
 
 // Editor configuration.
@@ -136,26 +128,24 @@ Editor.defaultConfig = {
 			'fontColor',
 			'highlight',
 			'|',
-			'numberedList',
 			'bulletedList',
-			'|',
-			'alignment',
-			'indent',
-			'outdent',
+			'numberedList',
 			'|',
 			'findAndReplace',
 			'undo',
 			'redo',
 			'-',
-			'link',
 			'insertTable',
-			'specialCharacters',
+			'link',
 			'blockQuote',
+			'specialCharacters',
 			'horizontalLine',
-			'|',
 			'imageInsert',
 			'mediaEmbed',
-			'htmlEmbed'
+			'|',
+			'alignment',
+			'outdent',
+			'indent'
 		],
 		shouldNotGroupWhenFull: true
 	},

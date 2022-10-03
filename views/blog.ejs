@@ -1,11 +1,19 @@
 <%- include('partials/header'); -%>
 
-<main class="blog-area">
-  <div class="container-fluid p-5">
-    <div class="blogTitle font-weight-bold"><%= blogTitle %></div>
-    <hr>
+<main>
+  <div class="blog-area">
+    <div class="bg-blue-2 text-light rounded-1">
+      <div class="px-3">
+        <img src="<%= authorImg %>" width="50px" height="50px" class="rounded-circle" referrerpolicy="no-referrer">
+          <ul class="infoList">
+            <li class="text-white"><%= blogAuthor %></li>
+            <li class="text-grey"><%= blogDate %></li>
+          </ul>
+      </div>
+      <div class="blogTitle font-weight-bold p-3"><%= blogTitle %></div>
+    </div>
     <br>
-    <div class="blogContent"><%- blogContent %></div>
+    <div class="blogContent p-2 pt-0"><%- blogContent %></div>
   </div>
 </main>
 
