@@ -1,0 +1,103 @@
+<%- include('partials/header'); -%>
+
+<main class="m-4">
+  <div class="content-area">
+    <div class="row bg-blue-1 text-light rounded-top py-1">
+        <div class="col-12">
+            <h1>Goal Calculator</h1>
+        </div>
+    </div>
+
+    <div class="row bg-white mt-2">
+        <div class="col-md-8 p-3 custom-border">
+            <form id="details">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" step="any" name="currentBW" id="currentBW" placeholder="in kg" required>
+                    <label for="currentBW">Current Body Weight (in kg) </label>
+                </div>
+        
+                <div class="form-floating mb-3">
+                    <input type="number" step="any" class="form-control" name="targetBW" id="targetBW" placeholder="in kg" required>
+                    <label class="form-label" for="targetBW">Target Body Weight (in kg) </label>
+                </div>
+        
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" name="weeks" id="weeks" placeholder="weeks" required>
+                    <label class="form-label" for="weeks">How many weeks do you have to reach the target weight? </label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="number" step="any" class="form-control" name="tdee" id="tdee" placeholder="tdee" required>
+                    <label class="form-label" for="tdee">Total daily energy expenditure(TDEE): </label>
+                    <a href="/tools/bmr_calculator" class="link-primary fs-small ms-2">Calculate TDEE.</a>
+                </div>
+        
+                <div class="mb-3">
+                    <p class="mb-1">Macronutrients ratio: </p>
+                    <select name="macros" class="form-select" id="macros" required>
+                        <option value="">Select(Carbs:Protiens:Fats)</option>
+                        <option value="1">High Carbs(60:25:15)</option>
+                        <option value="2">Moderate Carbs(50:30:20)</option>
+                        <option value="3">Zone Diet(40:30:30)</option>
+                        <option value="4">Low Carbs(25:35:40)</option>
+                        <option value="5">Keto Diet(05:35:60)</option>
+                        <option value="6">Custom</option>
+                    </select>
+                </div>
+        
+                <div class="d-none form-floating mb-3" id="macroC">
+                    <input type="number" class="form-control" id="carbs" name="carbs" placeholder="carb" required disabled>
+                    <label for="carbs">Carbohydrates Ratio </label>
+                </div>
+        
+                <div class="d-none form-floating mb-3" id="macroP">
+                    <input type="number" class="form-control" id="protiens" name="protiens" placeholder="protien" required disabled>
+                    <label for="protiens">Protiens Ratio </label>
+                </div>
+                
+
+                <div class="d-none form-floating mb-3" id="macroF">
+                    <input type="number" class="form-control" id="fats" name="fats" placeholder="fat" required disabled>
+                    <label for="fats">Fats Ratio </label>
+                </div>
+        
+                <div class="mb-3">
+                    <input class="form-control btn btn-pink py-2" type="submit">
+                </div>
+        
+            </form>
+        </div>
+        <div class="col-md-4 p-3">
+            <div class="mt-md-5">
+              <p class="<%= loginBtn %>" id="loginButton">
+                <a href="/login" class="text-decoration-none">
+                  <button class="btn-pink py-1 px-2">Login</button> 
+                </a>
+                to see last calculated value.
+              </p>
+    
+              <div class="<%= loggedInUser %>" id="calBox">
+
+                <h5 class="mb-0">Target Calories</h5>
+                <p class="fs-5 text-success" id="targetCal"><%= targetCal %> kcal/day</p>
+
+                <h5 class="mb-0 <%= diffType %>" id="differenceHeading"></h5>
+                <p class="fs-5 text-success" id="difference"></p>
+
+                <h5 class="mb-0">Protiens </h5>
+                <p class="fs-5 text-success" id="protienVal"><%= targetPr %> g/day</p>
+
+                <h5 class="mb-0">Carbohydrates </h5>
+                <p class="fs-5 text-success" id="carbsVal"><%= targetCarb %> g/day</p>
+
+                <h5 class="mb-0">Fats </h5>
+                <p class="fs-5 text-success" id="fatsVal"><%= targetFat %> g/day</p>
+
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</main>
+<script src="/javascript/goal.js"></script>
+<%- include('partials/footer'); -%>

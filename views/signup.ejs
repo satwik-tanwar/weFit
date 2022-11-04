@@ -6,7 +6,7 @@
       <div class="col-md-4 col-lg-5 me-5">
         <img src="/images/bg2.webp" class="img-fluid d-none d-lg-block">
       </div>
-      <div class="px-5 px-lg-0 col-md-8 col-lg-4 offset-lg-1 ">
+      <div class="px-md-5 px-lg-0 col-md-8 col-lg-4 offset-lg-1 ">
         
           <div class="">
             <a href="/auth/google" class="link-dark text-decoration-none">
@@ -48,26 +48,23 @@
               <p id="emailError" class="d-none text-danger error"></p>
             </div>
 
-            <!-- <div class="form-floating mb-3">
-              <input type="tel" class="form-control rounded-0" id="mobile" name="mobile" placeholder="Mobile number" pattern="[6789][0-9]{9}"required>
-              <label for="username">Mobile number</label>
-              <p id="mobileError" class="d-none text-danger error"></p>
-            </div> -->
-            
-
             <!-- Password input -->
             <div class="form-floating mb-3">
               <input type="password" class="form-control rounded-0" id="password" name="password" placeholder="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-._!`'#%&,:;<>=@{}~\$\(\)\*\+\/\\\?\[\]\^\|]+).{8,}$" required>
               <label for="floatingPassword">Password</label>
             </div>
-            <div id="message" class="d-none">
+            <div id="message" class="d-none mb-3">
               <p id="length" class="invalid">Minimum 8 characters</p>
               <p id="spcl" class="invalid">Special character</p>
               <p id="letter" class="invalid">Lowercase letter</p>
               <p id="capital" class="invalid">Uppercase letter</p>
               <p id="number" class="invalid">Number</p>
             </div>
-
+            <div class="form-floating">
+              <input type="password" class="form-control rounded-0" id="confPassword" name="confPassword" placeholder="password" required>
+              <label for="floatingPassword">Confirm Password</label>
+            </div>
+            <p id="confError" class="d-none text-danger error">*Password does not match</p>
             <div class="text-center mt-4 pt-2">
               <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block w-100">Sign up</button>
             </div>

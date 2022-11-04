@@ -1,0 +1,32 @@
+<%- include('partials/header'); -%>
+
+<main class="m-2">
+
+  <div class="postArea mb-4">
+
+    <div class="bg-blue-2 headingBox">
+      <h3 class="text-light p-3">New Post</h3>
+    </div>
+
+    <div class="p-3">
+      <div class="mb-4" id="imgUploadBox">
+        <div class="d-none" id="newPostBox">
+          <img src="" class="newImg" id="newPostImg">
+        </div>
+        <input type="file" id="post" name="post" class="form-control" accept="image/png, image/jpeg, image/jpg" required>
+      </div>
+
+      <div>
+        <textarea class="captionInp" name="caption" id="caption" autocomplete="off" rows="1" placeholder="Write a caption..." autofocus maxlength="200"></textarea>
+      </div>
+
+      <p class="text-secondary .fs-small mb-4" id="wordCount"></p>
+      <div>
+        <button class="btn btn-pink px-3 py-2" id="submitBtn">Post</button>
+      </div>
+    </div>
+  </div>
+  <script src="/javascript/newPost.js"></script>
+</main>
+
+<%- include('partials/footer'); -%>

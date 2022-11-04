@@ -31,6 +31,7 @@ function learnRoute(app,blogDb){
           loginBtn:"d-none",
           user:req.user.name,
           userImg:req.user.profilePicture,
+          id:req.user._id
         };
       }else{
         learnData ={
@@ -41,7 +42,8 @@ function learnRoute(app,blogDb){
         loggedInUserImg:"d-none",
         loginBtn:"d-block",
         user:"",
-        userImg:""
+        userImg:"",
+        id:""
       };
       } 
       res.render('learn',learnData); 
@@ -62,7 +64,8 @@ function learnRoute(app,blogDb){
         user:req.user.name,
         userImg:req.user.profilePicture,
         editBlogTitle:'',
-        editBlogContent:''
+        editBlogContent:'',
+        id:req.user._id
       };
       res.render('compose',composeData);
     }else{
@@ -79,7 +82,7 @@ function learnRoute(app,blogDb){
           });
       } else {
         const img = req.files.upload;
-        var imgName=img.md5+'.'+img.name.split('.')[1];
+        var imgName=img.md5+'.'+img.name.split('.')[img.name.split('.').length-1];
         const imgPath=path.join(__dirname, '../../public/uploads/');
         img.mv(imgPath+imgName);
         var imgURL='/uploads/'+imgName;
@@ -174,12 +177,14 @@ function learnRoute(app,blogDb){
         blogData.loginBtn="d-none";
         blogData.user=req.user.name;
         blogData.userImg=req.user.profilePicture;
+        blogData.id=req.user._id;
       }else{
         blogData.loggedInUser="d-none";
         blogData.loggedInUserImg="d-none";
         blogData.loginBtn="d-block";
         blogData.user="";
         blogData.userImg="";
+        blogData.id="";
       }
 
       if(err|| foundItem ===null){
@@ -233,7 +238,8 @@ function learnRoute(app,blogDb){
                 user:req.user.name,
                 userImg:req.user.profilePicture,
                 editBlogTitle:foundItem.title,
-                editBlogContent:foundItem.content
+                editBlogContent:foundItem.content,
+                id:req.user._id
               };
             res.render('compose',renderData);
           }else{

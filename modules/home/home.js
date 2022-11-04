@@ -24,7 +24,8 @@ function homeRoute(app,blogDb){
             loginBtn:"d-block",
             user:"",
             userImg:"",
-            posts:foundItem
+            posts:foundItem,
+            id:''
           };
           res.render('home',homeData);
         }

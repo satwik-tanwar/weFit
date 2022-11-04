@@ -1,0 +1,56 @@
+<%- include('partials/header'); -%>
+
+<main>
+  <div class="bg-white container-fluid m-auto completeProfileForm p-5 rounded-4">
+    <h3>Edit your profile</h3><br>
+
+    <form action="/editProfile" method="post">
+
+      <!-- Name -->
+      <div class="form-floating mb-4">
+        <input type="text" class="form-control rounded-4" id="fullName" name="name" placeholder="Full Name" value="<%= user %>" required>
+        <label for="firstName">Full Name</label>
+      </div>
+
+      <!-- Mobile input -->
+      <div class="form-floating mb-4">
+        <input type="text" class="form-control rounded-4" id="mobile" name="mobile" placeholder="Mobile number" pattern="[6789][0-9]{9}" value="<%= mobile %>" required>
+        <label for="username">Mobile number</label>
+        <p id="mobileError" class="d-none text-danger error"></p>
+      </div>
+
+      <!-- description -->
+      <div class="mb-4 form-floating">
+        <textarea name="description" id="description" class="form-control rounded-4 desc" placeholder="Description" maxlength="200"><%= description %></textarea>
+        <label for="description">Description <span class="text-secondary">(optional)</span></label>
+        <p class='ms-1 text-secondary' id="count"></p>
+      </div>
+
+      <!-- private account -->
+      <div class="form-check form-switch mb-4">
+        <label class="form-check-label" for="private">Private Account</label>
+        
+        <input class="form-check-input" type="checkbox" role="switch" id="private" name="private" value="true" <%= isChecked %>>
+      </div>
+      
+
+      <!-- profile picture -->
+      <div class="mb-4">
+        <label for="dp" class="dpImg">
+          <img src="<%= userImg %>" id="uploadedImg">
+          <span id="uploadImgTxt">Upload Image</span>
+        </label>
+        <input type="file" id="dp" name="dp" accept="image/png, image/jpeg, image/jpg">
+      </div>
+
+      <div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+      
+    </form>
+  </div>
+</main>
+
+<script src="/javascript/completeProfile.js"></script>
+
+<%- include('partials/footer'); -%>

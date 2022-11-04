@@ -1,0 +1,167 @@
+<%- include('partials/header'); -%>
+
+<main class="">
+  <div class="tool-area">
+
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            Add Progress
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+
+            <form action="/tools/progress_tracker/add" method="post">
+              
+              <!-- Weight -->
+              <div class="form-floating mb-3">
+                <input type="number" step="any" class="form-control rounded-0" id="weight" name="weight" placeholder="Weight (in kg)" autocomplete="off" required>
+                <label for="weight">Weight (in kg)</label>
+              </div>
+
+              <!-- Height -->
+              <div class="form-floating mb-3">
+                <input type="number" step="any" class="form-control rounded-0" id="height" name="height" placeholder="Height" autocomplete="off" required>
+                <label for="weight">Height (in cm)</label>
+              </div>
+
+              <!-- body fat -->
+              <div class="form-floating mb-0">
+                <input type="number" step="any" class="form-control rounded-0" id="bodyfat" name="bodyfat" placeholder="body fat" autocomplete="off">
+                <label for="weight">Body Fat Percentage</label>
+              </div>
+              <div class="mb-3 text-right">
+                <a href="/tools/bodyFat_calculator" class="ms-2 link-primary fs-small">
+                  Calculate Body Fat Percentage
+                </a>
+              </div>
+
+              <!-- waist -->
+              <div class="form-floating mb-3">
+                <input type="number" step="any" class="form-control rounded-0" id="waist" name="waist" placeholder="waist" autocomplete="off">
+                <label for="weight">Waist Size (in inches)</label>
+              </div>
+  
+              <!-- chest -->
+              <div class="form-floating mb-3">
+                <input type="number" step="any" class="form-control rounded-0" id="chest" name="chest" placeholder="chest" autocomplete="off">
+                <label for="weight">Chest Size (in inches)</label>
+              </div>
+
+              <!-- arm -->
+              <div class="form-floating mb-3">
+                <input type="number" step="any" class="form-control rounded-0" id="arm" name="arm" placeholder="arm" autocomplete="off">
+                <label for="weight">Arm Size (in inches)</label>
+              </div>
+
+              <!-- quad -->
+              <div class="form-floating mb-3">
+                <input type="number" step="any" class="form-control rounded-0" id="quad" name="quad" placeholder="quad" autocomplete="off">
+                <label for="quad">Quad Size (in inches)</label>
+              </div>
+
+              <!-- hip -->
+              <div class="form-floating mb-3">
+                <input type="number" step="any" class="form-control rounded-0" id="hip" name="hip" placeholder="hip" autocomplete="off">
+                <label for="weight">Hip Size (in inches)</label>
+              </div>
+  
+              <div class="text-center">
+                <button type="submit" id="signup" class="form-control btn btn-pink py-2">Add Progress</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Progress
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+          <div class="accordion-body">
+            
+            <div class="row">
+              <div class="col-md-5">
+                <div class="calender-container mb-3">
+                  <div class="calendar">
+                    <div class="calender-month">
+                      <i class="fas fa-angle-left prev"></i>
+                      <div class="calender-date">
+                        <h1></h1>
+                        <p></p>
+                      </div>
+                      <i class="fas fa-angle-right next"></i>
+                    </div>
+                    <div class="calender-weekdays">
+                      <div>S</div>
+                      <div>M</div>
+                      <div>T</div>
+                      <div>W</div>
+                      <div>T</div>
+                      <div>F</div>
+                      <div>S</div>
+                    </div>
+                    <div class="calender-days"> </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-7 progress-data">
+                <table id="progressDataField" class="d-none">
+                  <tr>
+                    <td class="progress-item">Body Weight</td>
+                    <td id="weightValue">N/A</td>
+                  </tr>
+                  <tr>
+                    <td class="progress-item">Height</td>
+                    <td id="heightValue">N/A</td>
+                  </tr>
+                  <tr>
+                    <td class="progress-item">Body Fat Percentage</td>   
+                    <td id="bodyFat">N/A</td>                    
+                  </tr>
+                  <tr>
+                    <td class="progress-item">Waist Size</td>                     
+                    <td id="waistSize">N/A</td>                    
+                  </tr>
+                  <tr>
+                    <td class="progress-item">Chest Size</td>
+                    <td id="chestSize">N/A</td>                   
+                  </tr>
+                  <tr>
+                    <td class="progress-item">Arm Size</td>
+                    <td id="armSize">N/A</td>
+                  </tr>
+                  <tr>
+                    <td class="progress-item"> Quad Size</td>
+                    <td id="quadSize">N/A</td>
+                  </tr>
+                  <tr>
+                    <td class="progress-item">Hip Size</td>
+                    <td id="hipSize">N/A</td>
+                  </tr>
+                </table>
+                <div id="noData" class="m-2">
+                  <h5>
+                    Oops!! no data found for the selected date.
+                  </h5>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</main>
+<script src="/javascript/progress.js"></script>
+<%- include('partials/footer'); -%>

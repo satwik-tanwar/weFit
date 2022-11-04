@@ -10,6 +10,25 @@ function database(){
   mongoose.connect('mongodb://localhost:27017/fitty');
   //--------------------------  USER DATA ----------------------------------//
 
+  const postPool=new mongoose.Schema({
+    posts: [{
+      _id: Object,
+      date: Date,
+      post: String,
+      owner: String,
+      ownerName: String,
+      ownerDp: String,
+      caption: String,
+      likes: [String],
+      comments: [{
+        author: String,
+        authorName: String,
+        authorDp: String,
+        text: String
+      }]
+    }]
+  });
+  const Post=mongoose.model('Post',postPool);
   const userSchema=new mongoose.Schema({
     email: String,
     isEmailVerified: { type: Boolean, default: false },
@@ -24,46 +43,33 @@ function database(){
     gender: String,
     dob: Date,
     private: { type: Boolean, default: false },
+    followRequests: [String],
     followers: [String],
     following: [String],
     profilePicture: {type: String, default:"/images/dp.png"},
-    posts: [{
+    posts: [String],
+
+    //--------------------------  DATA from TOOLS ----------------------------------//
+
+    //------------------  progress ----------------//
+    progress:[{
       date: Date,
-      post: String,
-      likes: [String],
-      comments: [{
-        author: String,
-        text: String
-      }]
-    }],
-  });
-  userSchema.plugin(passportLocalMongoose,{usernameField: "email"});
-  userSchema.plugin(findOrCreate);
-
-  //--------------------------  DATA from TOOLS ----------------------------------//
-
-  const toolsDataSchema=new mongoose.Schema({
-    user: userSchema,
-
-    //------------------  PROGRESS TRACKER ---------------------//
-    progress:{
-      date: Date,
-      bodyWeight: {
+      weight: {
         type:Number,
         min:0
       },
-      waistSize: {
+      height: {
         type:Number,
-        min: 0
+        min:0
       },
       bodyFat: {
         type:Number,
         min: 0,
         max: 100
       },
-      quadSize:{
+      waistSize: {
         type:Number,
-        min:0
+        min: 0
       },
       chestSize:{
         type:Number,
@@ -73,15 +79,15 @@ function database(){
         type:Number,
         min:0
       },
+      quadSize:{
+        type:Number,
+        min:0
+      },
       hipSize:{
         type:Number,
         min:0
       },
-      muscleMass:{
-        type:Number,
-        min:0
-      },
-    },
+    }],
 
     //------------------  DIET TOOL ---------------------//
     diet:{
@@ -146,6 +152,9 @@ function database(){
       }
     }
   });
+  userSchema.plugin(passportLocalMongoose,{usernameField: "email"});
+  userSchema.plugin(findOrCreate);
+
 
   //--------------------------  BLOG DATA ----------------------------------//
   const blogSchema=new mongoose.Schema({
@@ -183,17 +192,16 @@ function database(){
           user.name=profile.displayName;
           user.isEmailVerified=true;
           user.email=profile.emails[0].value;
-          user.profilePicture=profile.photos[0].value;
           user.save();
           return cb(err, user);
         });
     }
   ));
 
-  const Tool=mongoose.model('Tool',toolsDataSchema);
   const Blog=mongoose.model('Blog',blogSchema);
+  
 
-  return [User, Tool, Blog];
+  return [User, Blog, Post];
 }
 
 

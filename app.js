@@ -30,8 +30,8 @@ app.use(passport.session());
 const database=require(__dirname+"/database/data-connectivity.js");
 const endpoints=database();
 const userDb=endpoints[0];
-const toolDb=endpoints[1];
-const blogDb=endpoints[2];
+const blogDb=endpoints[1];
+const postDb=endpoints[2];
 
 // ****************************** ROUTES *********************************** //
 
@@ -45,8 +45,19 @@ const learnRoute=require(__dirname+'/modules/learn/learn.js');
 learnRoute(app,blogDb);
 
 const feedRoute=require(__dirname+'/modules/feed/feed.js');
-feedRoute(app,userDb);
+feedRoute(app,userDb,postDb);
 
+const profileRoute=require(__dirname+'/modules/profile/profile.js');
+profileRoute(app,userDb,postDb);
+
+const toolsRoute=require(__dirname+'/modules/tools/tools.js');
+toolsRoute(app,userDb);
+
+const newPostRoute=require(__dirname+'/modules/newPost/newPost.js');
+newPostRoute(app,userDb,postDb);
+
+const postRoute=require(__dirname+'/modules/post/post.js');
+postRoute(app,userDb,postDb);
 
 app.listen(process.env.PORT || 3000,function(){
   console.log("Server is running on port 3000.");

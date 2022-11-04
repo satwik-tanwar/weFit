@@ -1,0 +1,60 @@
+<%- include('partials/header'); -%>
+
+<main class="">
+  <div class="content-area bg-light p-0">
+
+    <div class="row bg-blue-2 text-light pt-4 px-2 px-md-5 m-0">
+      <div class="col-6 col-md-4">
+        <h4><%= profileUserName %></h4>
+        <p class="fs-small text-grey"><%= description %></p>
+      </div>
+
+      <div class="col-6 col-md-8 profileInfo">
+        <div>
+          <b><%= postCount %></b> 
+          <span class="text-grey">Posts</span>
+        </div>
+        <div>
+          <b id="followerCount"><%= followersCount %></b> 
+          <span class="text-grey">Followers</span>
+        </div>
+        <div>
+          <b><%= followingCount %></b> 
+          <span class="text-grey">Following</span>
+        </div>
+        <a href="/editProfile" class="<%= editBtn %>"><button class="btn btn-pink mt-3 px-3 pt-1">Edit Profile</button></a>
+        <button class="btn btn-pink mt-3 px-3 pt-1 <%= followBtn %>" id="follow">Follow</button>
+        <button class="btn btn-secondary rounded-5 mt-3 px-3 pt-1 <%= reqBtn %>" id="requested">Requested</button>
+        <button class="btn btn-pink mt-3 px-3 pt-1 <%= unFollowBtn %>" id="unfollow">Unfollow</button>
+      </div>
+    </div>
+    
+    <div class="row py-2 profileImgBox m-0">
+      <div class="col-4 col-md-5 "></div>
+      <div class="col-4 col-md-2 p-0">
+          <img src="<%= profileUserImg %>" class="profileImg" alt="">
+      </div>
+    </div>
+
+    <div class="<%= privateAccMsg %> bg-white py-5 text-center" id="pvtAccMsg">
+      <h4>This is a private Account</h4>
+      <p>Follow this account to see their photos</p>
+    </div>
+    
+    <div class="row bg-white test <%= showPosts %> m-0" id="postsBox">
+
+      <% posts.forEach(function(post) { %>   
+        <div class="col-6 mb-3 ">
+          <a href="<%= '/post/'+post._id %>">
+            <img src="<%= post.post %>" class="profilePosts">
+          </a>
+        </div>
+      <% }) %>
+    </div>
+    
+
+  </div>
+  <script src="/javascript/profile.js"></script>
+</main>
+
+<%- include('partials/footer'); -%>

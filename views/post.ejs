@@ -1,0 +1,58 @@
+<%- include('partials/header'); -%>
+
+<main class="m-2">
+
+  <div class="postArea">
+    <div class="bg-blue-2 p-3 headBorder">
+      <a class="link-light text-decoration-none" href="<%= '/profile/'+post.owner %>">
+        <img src="<%= post.ownerDp %>" height="50px" width="50px" class="rounded-circle me-2">
+        <b><%= post.ownerName %> </b>
+      </a>
+    </div>
+    <div class="p-3">
+      <img src="<%= post.post %>" class="newImg mb-3">
+      <p>
+        <input type="text" id="postID" value="<%= post._id %>" disabled class="d-none">
+        <i class="fa-regular fa-heart fs-5 icon <%= liked %>" id="like"></i>&nbsp;
+        <span class="fs-5 text-secondary" id="likeCount"><%= post.likes.length %></span>
+        &nbsp;&nbsp;&nbsp;
+        <a href="#comment" class="text-decoration-none link-dark">
+          <i class="fa-regular fa-comment fs-5 icon"></i>&nbsp;
+          <span class="fs-5 text-secondary"><%= post.comments.length %></span>
+        </a>
+      </p>
+      <p class="mb-0">
+        <a class="link" href="<%= '/profile/'+ownerInfo.id %>">
+          <b><%= ownerInfo.name %> </b>
+        </a>
+        <%= post.caption %>
+      </p>
+      <p class="text-secondary fs-small mb-1"><%= post.date.toLocaleDateString() %></p>
+      <hr>
+      <h5 class="mb-3">Comments</h5>
+      <% post.comments.forEach(comment => { %>
+          <p>
+            <a class="link" href="<%= '/profile/'+ comment.author %>">
+              <img src="<%= comment.authorDp %>" height="40px" width="40px" class="rounded-circle me-2">
+              <strong><%= comment.authorName %> </strong>
+            </a>
+            <%= comment.text %>
+          </p>
+      <% }); %>
+
+      <div>
+        <textarea class="captionInp" name="comment" id="comment" autocomplete="off" rows="1" placeholder="Write a Comment..." autofocus required maxlength="200"></textarea>
+      </div>
+      <div class="position-relative">
+        <button class="btn btn-pink px-2 py-1 fs-small" id="commentBtn">Comment</button>
+        <span class="text-secondary .fs-small d-inline-block position-absolute end-0" id="wordCount"></span>
+      </div>
+    </div>
+    
+
+  </div>
+  <script src="/javascript/post.js"></script>
+  
+</main>
+
+<%- include('partials/footer'); -%>

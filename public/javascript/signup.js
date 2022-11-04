@@ -100,4 +100,12 @@ password.onkeyup = function() {
   }
 }
 
-
+// ---------------- confirm password -------------------- //
+var confPassword = document.getElementById("confPassword");
+confPassword.onkeyup=function(){
+  if(confPassword.value!==password.value){
+    document.getElementById('confError').classList.remove('d-none');
+  }else{
+    document.getElementById('confError').classList.add('d-none');
+  }
+}

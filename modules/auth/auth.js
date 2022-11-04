@@ -15,7 +15,8 @@ function authRoute(app,userDb){
       loggedInUserImg:"d-none",
       loginBtn:"d-block",
       user:"",
-      userImg:''
+      userImg:'',
+      id:''
     };
     res.render('signup',signupData);
     }  
@@ -54,7 +55,8 @@ function authRoute(app,userDb){
           loggedInUserImg:"d-md-block",
           loginBtn:"d-none",
           user:req.user.name,
-          userImg:req.user.profilePicture
+          userImg:req.user.profilePicture,
+          id:req.user._id
         };
         res.render('completeProfile',renderData);
       }else{
@@ -98,7 +100,7 @@ function authRoute(app,userDb){
           });
       } else {
         const img = req.files.img;
-        imgName=img.md5+'.'+img.name.split('.')[1];
+        var imgName=img.md5+'.'+img.name.split('.')[img.name.split('.').length-1];
         const imgPath=path.join(__dirname, '../../public/uploads/');
         img.mv(imgPath+imgName);
         var imgURL='/uploads/'+imgName;
@@ -142,7 +144,8 @@ function authRoute(app,userDb){
         loggedInUserImg:"d-none",
         loginBtn:"d-block",
         user:"",
-        userImg:""
+        userImg:"",
+        id:''
       };
       res.render('login',loginData);
     }

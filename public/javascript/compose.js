@@ -5,13 +5,16 @@ document.getElementById("body").classList.remove('bodyPt');
 
 // -------------------- compose ----------------------- //
 const tx = document.getElementsByTagName("textarea");
-for (let i = 0; i < tx.length; i++) {
-  tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;");
-  tx[i].addEventListener("input", OnInput, false);
+
+tx[0].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;");
+tx[0].addEventListener("input", OnInput, false);
+
+tx[0].onkeyup=function(){
+  console.log(tx[0]);
 }
 
 function OnInput() {
-    this.style.height='auto';
+  this.style.height='auto';
   this.style.height = (this.scrollHeight) + "px";
 }
 
