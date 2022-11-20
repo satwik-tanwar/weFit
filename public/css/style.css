@@ -348,6 +348,49 @@ background: #eee;
   padding:0.5rem 1.5rem;
 }
 
+/******************* diet ******************/
+
+.sidebar-item{
+  color: white;
+  line-height: 2rem;
+  border: 0;
+  background-color: #1a1a2e;
+  width: 100%;
+  margin: 4px 0;
+}
+
+.sidebar-item:hover{
+  background-color: #d94560;
+}
+
+.sidebar-active{
+  background-color: #d94560;
+}
+
+
+.food-body-box{
+  max-width:600px;
+  margin: auto;
+}
+
+.food-table{
+  width: 100%;
+}
+
+.foodQuantity{
+  width: 100px;
+}
+
+.diet-table td{
+  padding: 2px 20px 2px 0px;
+}
+
+/*******************  training tool ******************/
+.training-body-box{
+  max-width:600px;
+  margin: auto;
+}
+
 /******************* body fat calculator ******************/
 .custom-border{
   border-bottom: 2px solid rgb(175, 174, 174);
@@ -525,6 +568,29 @@ background: #eee;
 .btn-pink:hover{
   color: rgb(210, 209, 209);
   background-color: #c94560;
+}
+.btn-pink:disabled,
+.btn-pink[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+
+.btn-blue{
+  background-color: #16213e;
+  color: white;
+  border-radius: 20px;
+  border: 0;
+  padding:6px 10px;
+}
+.btn-blue:focus{
+  color: rgb(210, 209, 209);
+  background-color: #06213e;
+}
+.btn-blue:hover{
+  color: rgb(210, 209, 209);
+  background-color: #06213e;
 }
 
 .text-grey{

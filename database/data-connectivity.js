@@ -52,6 +52,10 @@ function database(){
     //--------------------------  DATA from TOOLS ----------------------------------//
 
     //------------------  progress ----------------//
+    height:{
+      type:Number,
+      min:0
+    },
     progress:[{
       date: Date,
       weight: {
@@ -90,55 +94,50 @@ function database(){
     }],
 
     //------------------  DIET TOOL ---------------------//
-    diet:{
+    food:[{
+      name: String,
+      protien: Number,
+      carbs: Number,
+      fats: Number,
+      cals: Number
+    }],
+    diet:[{
       date: Date,
+      calories: Number,
+      protien: Number,
+      carbs: Number,
+      fats: Number,
       breakfast:[{
-        food: String,
-        calories: Number,
-        protien: Number,
-        carbs: Number,
-        Fats: Number
+        name:String,
+        quantity: Number
       }],
       lunch:[{
-        food: String,
-        calories: Number,
-        protien: Number,
-        carbs: Number,
-        Fats: Number
+        name:String,
+        quantity: Number
       }],
       snacks:[{
-        food: String,
-        calories: Number,
-        protien: Number,
-        carbs: Number,
-        Fats: Number
+        name:String,
+        quantity: Number
       }],
       dinner:[{
-        food: String,
-        calories: Number,
-        protien: Number,
-        carbs: Number,
-        Fats: Number
+        name:String,
+        quantity: Number
       }],
-    },
+    }],
 
     //------------------  TRAINING TOOL ---------------------//
-    training:{
+    training:[{
       date: Date,
-      rm1:{
-        exercise: String,
-        weight: Number,
-        reps:Number,
-        rm: Number
-      },
+      benchRm: Number,
+      deadliftRm: Number,
+      squatRm: Number,
+      overheadRm: Number,
       exercises:[{
         exName: String,
-        reps:[{
-          setNum: Number,
-          weight: Number
-        }]
+        reps:Number,
+        sets: Number
       }]
-    },
+    }],
 
     //------------------  GOAL ---------------------//
     goal:{

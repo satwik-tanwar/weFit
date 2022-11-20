@@ -6,7 +6,7 @@ document.getElementById("body").classList.remove('bodyPt');
 // -------------------- compose ----------------------- //
 const tx = document.getElementsByTagName("textarea");
 
-tx[0].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;");
+tx[0].setAttribute("style", "height:" + (tx[0].scrollHeight) + "px;");
 tx[0].addEventListener("input", OnInput, false);
 
 tx[0].onkeyup=function(){

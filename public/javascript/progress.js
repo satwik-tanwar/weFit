@@ -183,7 +183,6 @@ function getData(element){
         }
       });
       if(!noDataFlag){
-        console.log(progressData);
         document.getElementById('progressDataField').classList.remove('d-none');
         document.getElementById('noData').classList.add('d-none');
 

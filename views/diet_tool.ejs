@@ -1,7 +1,203 @@
 <%- include('partials/header'); -%>
+<main>
+  <div class="row m-0">
+    <div class="col-md-3 p-2 bg-blue-1 text-center" id="sidebar">
+      <div id="menu" class="py-3">
+        <div>
+          <button class="sidebar-item" id="addFood">Save New Food</button>
+        </div>
+        <div>
+          <button class="sidebar-item sidebar-active" id="food">Saved Food</button>
+        </div>
+        <div>
+          <button class="sidebar-item " id="diet">Diet Plan</button>
+        </div>
+      </div>
+    </div>
 
-<main class="m-5">
-  <h1>diet tool</h1>
+    <div class="col-md-9 pb-5 pt-3">
+      <div class="food-body-box pt-3 d-none" id="addFood-body">
+       
+        <div class="">
+          <form action="/tools/diet_tool/addFood" method="post">
+            <div class="form-floating mb-0">
+              <input type="text" class="form-control" id="foodName" name="foodName" placeholder="Name" autocomplete="off" required>
+              <label for="foodName">Name of food</label>
+            </div>
+            <p class="mt-0 text-danger fs-small d-none" id="savedErr">*Food already saved, try saving another food</p>
+
+            <div class="form-floating my-3">
+              <input type="number" step="any" class="form-control" id="protien" name="protien" placeholder="protien" autocomplete="off" max="100" required>
+              <label for="protien">Protien (gm/100 gm)</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="number" step="any" class="form-control" id="carb" name="carb" placeholder="carb" autocomplete="off" max="100" required>
+              <label for="carb">Carbohydrates (gm/100 gm)</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="number" step="any" class="form-control" id="fat" name="fat" placeholder="fat" autocomplete="off" max="100" required>
+              <label for="fat">Fats (gm/100 gm)</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="number" step="any" class="form-control" id="cal" name="cal" placeholder="cal" autocomplete="off" readonly>
+              <label for="cal">Calories (kcal/100 gm)</label>
+            </div>
+
+            <div>
+              <input type="submit" class="btn btn-primary form-control" value="Add Food">
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="food-body-box pt-3" id="food-body">
+       
+        <table class="food-table">
+          <tr>
+            <td></td>
+            <td class="text-center"><h6>Quantity</h6></td>
+            <td class="text-end">
+              <select name="mealType" class="btn btn-secondary rounded-4" id="selectMealType">
+                <option value="none">--Meal Type--</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="snacks">Snacks</option>
+                <option value="dinner">Dinner</option>
+              </select>
+            </td>
+          </tr>
+
+          <% savedFood.forEach(food => { %>
+            <tr id="<%= food.name+' row' %>">
+              <td>
+                <p class="mb-0">
+                  <%= food.name %> &emsp;
+                  <i class="fa-solid fa-trash icon text-danger deleteSavedFood" id="<%= food.name %>"></i>
+                </p>
+                <p class="fs-small text-secondary"><%= food.cals %>kcal <br>
+                  P:<%= food.protien %>g, C:<%= food.carbs %>g, F:<%= food.fats %>g</p>
+              </td>
+              <form action="/tools/diet_tool/addMeal/<%= food.name %>" method="POST">
+                <td>
+                  <input type="text" class="d-none mealTypeInp" name="mealType" readonly>
+                  <input type="number" step="any" name="quantity" class="form-control foodQuantity m-auto" required placeholder="gm">
+                </td>
+                <td class="text-end">
+                  <button type="submit" class="btn btn-pink px-2 py-1 addBtn" disabled>Add to Diet</button>
+                </td>
+              </form>
+            </tr>
+          <% }); %>
+        </table>
+      </div>
+      <div class="pt-3 d-none" id="diet-body">
+        
+        <div class="row">
+          <div class="col-md-6">
+            <div class="calender-container mb-3">
+              <div class="calendar " id="calendar">
+                <div class="calender-month">
+                  <i class="fas fa-angle-left prev"></i>
+                  <div class="calender-date">
+                    <h1></h1>
+                    <p></p>
+                  </div>
+                  <i class="fas fa-angle-right next"></i>
+                </div>
+                <div class="calender-weekdays">
+                  <div>S</div>
+                  <div>M</div>
+                  <div>T</div>
+                  <div>W</div>
+                  <div>T</div>
+                  <div>F</div>
+                  <div>S</div>
+                </div>
+                <div class="calender-days"> </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            
+            <div id="diet-summary">
+              <h4 id="dateID"></h4>
+              <div id="receivedData">
+                <div>
+                  <p id="summary">
+                    <table class="diet-table">
+                      <tr>
+                        <td><strong>Calories: </strong></td>
+                        <td><span id="dayCalories"></span> kcal</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Protien: </strong></td>
+                        <td><span id="dayProtien"></span> gm</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Carbohydrates: </strong></td>
+                        <td><span id="dayCarbs"></span> gm</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Fats: </strong></td>
+                        <td><span id="dayFats"></span> gm</td>
+                      </tr>
+                    </table>
+                  </p>
+                </div>
+                
+                <div>
+    
+                  <div class="fs-4 text-success">
+                    <b>Breakfast</b>&emsp;
+                    <i class="fa-solid fa-circle-plus icon text-success fs-4" id="addBreakfast"></i>
+                  </div>
+                  
+                  <p id="breakfastList">
+                    
+                  </p>
+        
+                  <div class="fs-4 text-success">
+                    <b>Lunch</b>&emsp;
+                    <i class="fa-solid fa-circle-plus icon text-success fs-4" id="addLunch"></i>
+                  </div>
+                  
+                  <p id="lunchList">
+                    
+                  </p>
+        
+                  <div class="fs-4 text-success">
+                    <b>Snacks</b>&emsp;
+                    <i class="fa-solid fa-circle-plus icon text-success fs-4" id="addSnacks"></i>
+                  </div>
+                  
+                  <p id="snacksList">
+                    
+                  </p>
+        
+                  <div class="fs-4 text-success">
+                    <b>Dinner</b>&emsp;
+                    <i class="fa-solid fa-circle-plus icon text-success fs-4" id="addDinner"></i>
+                  </div>
+                  
+                  <p id="dinnerList">
+                    
+                  </p>
+                
+                </div>
+              </div>
+              <div id="noDataFound">Oops! No diet plan found.</div>
+            </div>
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </main>
 
+<script src="/javascript/dietTool.js"></script>
 <%- include('partials/footer'); -%>
