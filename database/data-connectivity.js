@@ -7,7 +7,7 @@ const findOrCreate = require('mongoose-findorcreate')
 module.exports=database;
 
 function database(){
-  mongoose.connect('mongodb://localhost:27017/fitty');
+  mongoose.connect('mongodb+srv://satwik_tanwar:Stan%40956879@fitty.lyn18ds.mongodb.net/?retryWrites=true&w=majority');
   //--------------------------  USER DATA ----------------------------------//
 
   const postPool=new mongoose.Schema({
