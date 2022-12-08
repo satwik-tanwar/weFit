@@ -60,5 +60,5 @@ const postRoute=require(__dirname+'/modules/post/post.js');
 postRoute(app,userDb,postDb);
 
 app.listen(process.env.PORT || 3000,function(){
-  console.log("Server is running on port 3000.");
+  console.log("Server is running");
 });
